@@ -12,9 +12,10 @@ $app->options('/{routes:.+}', function ($request, $response, $args) {
 });
 
 
-$app->get('/hello/{name}', function (Request $request, Response $response) {
+$app->post('/hello/{name}', function (Request $request, Response $response) {
+    $origin = $_SERVER['HTTP_HOST'];
     $name = $request->getAttribute('name');
-    $response->getBody()->write("Hello, $name");
+    $response->getBody()->write("Hello, $origin");
 
     return $response;
 });
