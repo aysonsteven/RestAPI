@@ -7,10 +7,16 @@
  * @license   https://github.com/slimphp/Slim/blob/3.x/LICENSE.md (MIT License)
  */
 namespace Slim;
-use Slim\App;
+
+use \Psr\Http\Message\ServerRequestInterface as Request;
+use \Psr\Http\Message\ResponseInterface as Response;
+//use Slim\App;
 
 
-class Users{
+class users{
+    public function __construct(){
+
+    }
     public function register(){
         $app = new App();
         $app->options('/{routes:.+}', function ($request, $response, $args) {
