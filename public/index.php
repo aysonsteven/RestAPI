@@ -21,9 +21,9 @@ $app->add(function ($req, $res, $next) {
 });
 
 
-$app->post('/hello/{name}', function (Request $request, Response $response) {
-    $sql = "SELECT * FROM users";
-
+$app->post('/hello/{id}', function (Request $request, Response $response) {
+    $id = $request->getAttribute('id');
+    $sql = "SELECT * FROM users WHERE id= $id";
     try{
         $db = new db();
         $db = $db->connect();
