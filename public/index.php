@@ -21,9 +21,25 @@ $app->add(function ($req, $res, $next) {
 });
 
 
-$app->post('/hello/{id}', function (Request $request, Response $response) {
-    $id = $request->getAttribute('id');
+$app->post('/hello', function (Request $request, Response $response) {
+    $id = $request->getParam('id');
     $sql = "SELECT * FROM users WHERE id= $id";
+    try{
+        $db = new db();
+        $db = $db->connect();
+
+        $stmt = $db->query( $sql );
+        $users = $stmt->fetchAll( PDO::FETCH_OBJ );
+        $db = null;
+
+        echo json_encode( $users );
+    }catch ( PDOException $e){
+        echo '{"error": {"text": '.$e->getMessage().'}';
+    }
+});
+
+$app->post('/all', function (Request $request, Response $response) {
+    $sql = "SELECT * FROM users";
     try{
         $db = new db();
         $db = $db->connect();
