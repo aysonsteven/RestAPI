@@ -23,7 +23,7 @@ Here's a basic usage example:
 ```php
 <?php
 
-require '/path/to/vendor/autoload.php';
+require 'etc';
 
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/users', 'get_all_users_handler');
