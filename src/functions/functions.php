@@ -56,4 +56,12 @@ class functions{
         }
         else return false;
     }
+
+    public function getSessionID( $id, $password ) {
+//        if ( $error = validate_id( $id ) ) return error( -20075, $error );
+//        $user = $this->get( $id );
+//        if ( empty($user) ) return error(-20070, 'user does not exist');
+//        if ( $user['password'] != encrypt_password( $password ) ) return error( -20071, 'incorrect password');
+        return substr(get_session_id( $user['idx'] ), 4);
+    }
 }
